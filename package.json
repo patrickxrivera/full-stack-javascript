@@ -8,8 +8,12 @@
     "npm": "5.0.3"
   },
   "scripts": {
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "start": "nodemon server/src/index.js --exec babel-node"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./server/src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start-prod": "npm run build && node ./build/index.js",
+    "start-dev": "nodemon server/src/index.js --exec babel-node"
   },
   "repository": {
     "type": "git",
