@@ -13,7 +13,8 @@
     "build-babel": "babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
     "start-prod": "npm run build && node ./build/index.js",
-    "start-dev": "nodemon src/index.js --exec babel-node"
+    "start-dev": "nodemon src/index.js --exec babel-node",
+    "start": "npm run build && node ./build/index.js"
   },
   "repository": {
     "type": "git",
