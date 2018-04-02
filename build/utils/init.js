@@ -3,11 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.initPORT = exports.initCookieSession = undefined;
+exports.initEnv = exports.initPORT = exports.initCookieSession = undefined;
 
 var _cookieSession = require('cookie-session');
 
 var _cookieSession2 = _interopRequireDefault(_cookieSession);
+
+var _dotenv = require('dotenv');
+
+var _dotenv2 = _interopRequireDefault(_dotenv);
 
 var _keys = require('../config/keys');
 
@@ -26,5 +30,9 @@ var initCookieSession = exports.initCookieSession = function initCookieSession()
 
 var initPORT = exports.initPORT = function initPORT() {
   return process.env.PORT || 5000;
+};
+
+var initEnv = exports.initEnv = function initEnv() {
+  _dotenv2.default.config();
 };
 //# sourceMappingURL=init.js.map

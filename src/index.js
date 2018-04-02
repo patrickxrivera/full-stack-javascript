@@ -6,7 +6,9 @@ import User from './models/User';
 import passportConfig from './services/passport';
 import initAuthRoutes from './routes/auth';
 import keys from './config/keys';
-import { initCookieSession, initPORT } from './utils/init';
+import { initEnv, initCookieSession, initPORT } from './utils/init';
+
+initEnv();
 
 mongoose.connect(keys.mongoURI);
 

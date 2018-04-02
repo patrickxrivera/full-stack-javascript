@@ -32,6 +32,8 @@ var _init = require('./utils/init');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+(0, _init.initEnv)();
+
 _mongoose2.default.connect(_keys2.default.mongoURI);
 
 var app = (0, _express2.default)();
