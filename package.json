@@ -13,7 +13,9 @@
     "build-babel": "./node_modules/.bin/babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
     "start-prod": "npm run build && node ./build/index.js",
-    "start": "nodemon src/index.js --exec babel-node"
+    "server": "nodemon src/index.js --exec babel-node",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
   "homepage": "https://github.com/pxr13/full-stack-javascript#readme",
   "dependencies": {
     "babel-preset-stage-2": "^6.24.1",
+    "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
