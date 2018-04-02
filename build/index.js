@@ -40,10 +40,14 @@ _mongoose2.default.connect(_keys2.default.mongoURI);
 
 var app = (0, _express2.default)();
 
-app.use((0, _cookieSession2.default)({
-  maxAge: _helpers.thirtyDays,
-  keys: [_keys2.default.cookieKey]
-}));
+var initCookieSession = function initCookieSession() {
+  return (0, _cookieSession2.default)({
+    maxAge: _helpers.thirtyDays,
+    keys: [_keys2.default.cookieKey]
+  });
+};
+
+app.use(initCookieSession());
 
 app.use(_passport2.default.initialize());
 app.use(_passport2.default.session());
