@@ -39,7 +39,8 @@ _passport2.default.deserializeUser(function (id, done) {
 var passportConfig = _passport2.default.use(new GoogleStrategy({
   clientID: _keys2.default.googleClientID,
   clientSecret: _keys2.default.googleClientSecret,
-  callbackURL: '/auth/google/callback'
+  callbackURL: '/auth/google/callback',
+  proxy: true
 }, function (accessToken, refreshToken, profile, done) {
   User.findOne({ googleId: profile.id }).then(function (existingUser) {
     if (existingUser) {
