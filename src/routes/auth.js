@@ -1,6 +1,10 @@
 import passport from 'passport';
 
 const initAuthRoutes = (app) => {
+  app.get('/', (req, res) => {
+    res.send({ hi: 'there' });
+  });
+
   app.get(
     '/auth/google',
     passport.authenticate('google', {

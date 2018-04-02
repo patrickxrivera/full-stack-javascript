@@ -11,6 +11,10 @@ var _passport2 = _interopRequireDefault(_passport);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initAuthRoutes = function initAuthRoutes(app) {
+  app.get('/', function (req, res) {
+    res.send({ hi: 'there' });
+  });
+
   app.get('/auth/google', _passport2.default.authenticate('google', {
     scope: ['profile', 'email']
   }));
