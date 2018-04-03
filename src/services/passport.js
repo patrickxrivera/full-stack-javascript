@@ -33,7 +33,6 @@ const passportConfig = passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ googleId: profile.id });
-
       existingUser ? done(null, existingUser) : createNewUser(profile);
     }
   )

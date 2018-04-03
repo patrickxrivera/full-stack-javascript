@@ -5,4 +5,6 @@ import reducers from '../reducers';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
+window.store = store;
+
 export default store;

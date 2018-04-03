@@ -1,13 +1,15 @@
 import { handleActions } from 'redux-actions';
 
-const initialState = {};
+const initialState = null;
 
 export default handleActions(
   {
     FETCH_USER: (state, action) => {
-      console.log(action);
-      return state;
+      const newState = action.payload || false;
+      return newState;
     }
   },
   initialState
 );
+
+export const getIsAuthenticated = (state) => state.isAuthenticated;
