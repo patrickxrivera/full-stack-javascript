@@ -10,10 +10,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf build && mkdir build",
-    "build-babel": "./node_modules/.bin/babel -d ./build ./src -s",
+    "build-babel": "./node_modules/.bin/babel -d ./build ./server -s",
     "build": "npm run clean && npm run build-babel",
     "start-prod": "npm run build && node ./build/index.js",
-    "server": "nodemon src/index.js --exec babel-node",
+    "server": "nodemon server/index.js --exec babel-node",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
