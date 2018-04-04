@@ -4,10 +4,12 @@ import passport from 'passport';
 import bodyParser from 'body-parser';
 import path from 'path';
 
-import User from './models/User';
-import passportConfig from './services/passport';
+import './models/Survey';
+import './models/User';
+import './services/passport';
 import initAuthRoutes from './routes/auth';
 import initBillingRoutes from './routes/billing';
+import initSurveyRoutes from './routes/survey';
 import keys from './config/keys';
 import { initEnv, initCookieSession, initPORT } from './utils/init';
 import { isProdEnv } from './utils/helpers';
@@ -25,6 +27,7 @@ app.use(passport.session());
 
 initAuthRoutes(app);
 initBillingRoutes(app);
+initSurveyRoutes(app);
 
 if (isProdEnv()) {
   app.use(express.static('client/build'));

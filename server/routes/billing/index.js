@@ -1,5 +1,4 @@
 import compose from 'lodash/fp/compose';
-import { pipeP } from 'ramda';
 
 import requireLogin from '../../middlewares/requireLogin';
 import { createCharge, getChargeConfig } from './helpers';
