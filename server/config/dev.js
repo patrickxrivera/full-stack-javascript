@@ -7,7 +7,8 @@ const devKeys = {
   stripePublishableKey: 'pk_test_CvWmXf1CVY3SVdotPhB8YkDU',
   stripeSecretKey: 'sk_test_RlV3g8NoUecrIo8MdCDmwseS',
   sendGridKey:
-    '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'
+    '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',
+  redirectDomain: 'http://localhost:5000'
 };
 
 export default devKeys;
