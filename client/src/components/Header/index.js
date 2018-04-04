@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import Payments from '../Payments';
 import { getIsAuthenticated } from '../../reducers/auth';
 
 class Header extends Component {
   getLink = () => (this.props.isAuthenticated ? '/surveys' : '/');
 
   renderContent = () => {
-    switch (this.props.isAuthenticated) {
-      case 'null':
+    const { isAuthenticated } = this.props;
+
+    switch (isAuthenticated) {
+      case null:
         return 'Loading';
       case false:
         return this.renderLoggedOut();
       default:
-        return this.renderLoggedIn();
+        return this.renderLoggedIn(isAuthenticated);
     }
   };
 
@@ -24,11 +27,17 @@ class Header extends Component {
     </li>
   );
 
-  renderLoggedIn = () => (
-    <li>
+  renderLoggedIn = ({ credits }) => [
+    <li key="1">
+      <Payments />
+    </li>,
+    <li key="3" style={{ margin: '0 10px' }}>
+      Credits: {credits}
+    </li>,
+    <li key="2">
       <a href="/api/logout">Logout</a>
     </li>
-  );
+  ];
 
   render() {
     return (
