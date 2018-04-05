@@ -11,8 +11,6 @@ import validateEmails from '../../../utils/validateEmails';
 const formStyle = { marginTop: '4rem' };
 
 class SurveyForm extends Component {
-  logValues = (values) => console.log(values);
-
   renderField = ({ label, name }) => (
     <Field
       key={name}
@@ -27,10 +25,10 @@ class SurveyForm extends Component {
   renderFields = () => map(FORM_FIELDS, this.renderField);
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, onSubmit } = this.props;
 
     return (
-      <form style={formStyle} onSubmit={handleSubmit(this.logValues)}>
+      <form style={formStyle} onSubmit={handleSubmit(onSubmit)}>
         {this.renderFields()}
         <Link to="/surveys" className="red btn-flat white-text">
           Cancel
@@ -47,7 +45,7 @@ class SurveyForm extends Component {
 const validate = (values) => {
   const errors = {};
 
-  errors.emails = validateEmails(values.emails || '');
+  errors.recipients = validateEmails(values.recipients || '');
 
   each(FORM_FIELDS, ({ name }) => {
     if (!values[name]) {
@@ -60,5 +58,6 @@ const validate = (values) => {
 
 export default reduxForm({
   validate,
-  form: 'surveyForm'
+  form: 'surveyForm',
+  destroyOnUnmount: false
 })(SurveyForm);
