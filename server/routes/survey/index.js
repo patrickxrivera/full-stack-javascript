@@ -4,17 +4,17 @@ import surveyTemplate from '../../services/emailTemplates/surveyTemplates';
 import Mailer from '../../services/Mailer';
 import requireLogin from '../../middlewares/requireLogin';
 import requireCredits from '../../middlewares/requireCredits';
-import { mapRecipients } from './helpers';
+import { mapRecipients, handleSurveyResponse } from './helpers';
 
 const Survey = mongoose.model('surveys');
 
 const initSurveyRoutes = (app) => {
-  app.get('/api/surveys/thanks', (req, res) => {
+  app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('Thanks for voting!');
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
-    console.log(req.body);
+    handleSurveyResponse(req.body);
     res.send({});
   });
 
@@ -25,11 +25,11 @@ const initSurveyRoutes = (app) => {
       title,
       subject,
       body,
-      recipients: recipients.split(',').map((email) => ({ email })),
+      recipients: mapRecipients(recipients),
       _user: req.user.id,
       dateSent: Date.now()
     });
-
+    console.log(survey.recipients);
     const mailer = new Mailer(survey, surveyTemplate(survey));
 
     try {

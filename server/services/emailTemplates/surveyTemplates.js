@@ -1,18 +1,18 @@
 import keys from '../../config/keys';
 
-const getSurveyTemplate = (survey) =>
+const getSurveyTemplate = ({ body, id }) =>
   `
     <html>
       <body>
         <div style="text-align: center;">
           <h3>I'd like your input!</h3>
           <p>Please answer the following question:</p>
-          <p>${survey.body}</p>
+          <p>${body}</p>
           <div>
-            <a href="${keys.redirectDomain}/api/surveys/thanks">Yes</a>
+            <a href="${keys.redirectDomain}/api/surveys/${id}/yes">Yes</a>
           </div>
           <div>
-            <a href="${keys.redirectDomain}/api/surveys/thanks">No</a>
+            <a href="${keys.redirectDomain}/api/surveys/${id}/no">No</a>
           </div>
         </div>
       </body>

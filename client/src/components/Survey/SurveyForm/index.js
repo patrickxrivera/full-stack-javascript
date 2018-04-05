@@ -42,6 +42,7 @@ class SurveyForm extends Component {
   }
 }
 
+// TODO - make more functional
 const validate = (values) => {
   const errors = {};
 
