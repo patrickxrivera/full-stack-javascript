@@ -23,7 +23,7 @@ const initSurveyRoutes = (app) => {
 
   app.post('/api/surveys/webhooks', (req, res) => {
     handleSurveyResponse(req.body);
-    res.send({});
+    res.send({}); // let SendGrid know the req was received
   });
 
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
